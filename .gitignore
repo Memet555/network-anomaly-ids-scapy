@@ -1,0 +1,56 @@
+﻿# 🛡️ Rule-Based Network Intrusion Detection System (IDS)
+## Kural Tabanlı Ağ Anomali ve Tehdit Tespit Sistemi
+
+Python ve **Scapy** kütüphanesi kullanılarak geliştirilmiş, yerel ağ arayüzündeki paketleri gerçek zamanlı dinleyen (packet sniffing), belirlenen kural setleri doğrultusunda **DoS (Denial of Service)** ve **Port Tarama (Port Scanning)** saldırılarını anında tespit eden kural tabanlı bir Ağ Saldırı Tespit Sistemi (IDS) yazılımıdır.
+
+Ayrıca gerçek ağ donanımlarını riske atmadan tespit mekanizmalarını doğrulamak için dahili bir **Saldırı Simülasyonu (Sandbox)** modülü ve canlı **Tkinter GUI** arayüzü içerir.
+
+---
+
+## 🚀 Öne Çıkan Özellikler
+
+### 1. 🔍 Canlı Ağ Paket Analizi (L2/L3 Packet Sniffing)
+* **Scapy Motoru:** Yerel ağ bağdaştırıcısına gelen tüm TCP, UDP ve ICMP paketlerini asenkron olarak dinler.
+* **Multi-Threading:** Paket koklama ve analiz süreci arka plan iş parçacığında çalışarak arayüzün (GUI) donmasını engeller.
+
+### 2. ⚡ Kural Tabanlı Tehdit Tespiti
+* **Hizmeti Aksatma (DoS) Algılama:** Tek bir IP adresi 5 saniye içerisinde hedefe 20'den fazla paket gönderdiğinde otomatik kırmızı alarm üretilir.
+* **Port Tarama (Port Scan) Algılama:** Tek bir kaynak IP, sistemin 5 veya daha fazla farklı portuna temas kurmaya çalıştığında potansiyel siber keşif/tarama olarak etiketlenir.
+* **False-Positive Farkındalığı:** Çoklu CDN mimarisi kullanan sistemlerin (ör. YouTube video akışları) ayrıştırılması için tasarlanmış eşik filtreleri.
+
+### 3. 🧪 Güvenli Test & Simülasyon Modülü (Sandbox)
+* Fiziksel ağda tehlikeli trafik oluşturmadan tespit motorunu test etmek için dahili sahte trafik üretici:
+  - **Normal Trafik:** Rastgele meşru cihaz istekleri (Port 80/443).
+  - **DoS Saldırganı Taklidi:** Saniyede 25+ paketlik hedefli trafik.
+  - **Port Tarayıcı Taklidi:** Sıralı portlara (21, 22, 23, 80, 443...) tarama istekleri.
+
+---
+
+## 🛠️ Teknolojiler
+* **Python 3**
+* **Scapy** (Ağ paket yakalama ve analiz)
+* **Tkinter** (Grafiksel Kullanıcı Arayüzü)
+* **Threading** (Eşzamanlı arka plan dinleme)
+
+---
+
+## 📦 Kurulum ve Çalıştırma
+
+`ash
+# 1. Bağımlılıkları yükleyin
+pip install -r requirements.txt
+
+# 2. Yönetici (Administrator) yetkileriyle başlatın (Paket dinleme için gereklidir)
+python ids_project.py
+`
+"@ | Set-Content -Path "C:\Users\memet\Desktop\okul eski\4.sınıf 2.dönem\bilgisayar ağ güvenliği\README.md" -Encoding UTF8
+
+"scapy>=2.5.0" | Set-Content -Path "C:\Users\memet\Desktop\okul eski\4.sınıf 2.dönem\bilgisayar ağ güvenliği\requirements.txt" -Encoding UTF8
+
+@"
+__pycache__/
+*.pyc
+*.log
+.vscode/
+.idea/
+venv/
